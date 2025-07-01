@@ -190,8 +190,8 @@ pub fn decode<R: ReadBytes>(input: &mut Bitstream<R>,
     // it is a good idea to make the assumption explicit. FLAC supports up to
     // sample widths of 32 in theory, so with the delta between channels that
     // requires 33 bits, but the reference decoder supports only subset FLAC of
-    // 24 bits per sample at most, so restricting ourselves to i32 is fine.
-    debug_assert!(32 >= bps);
+    // 32 bits per sample at most, so restricting ourselves to i32 is fine.
+    debug_assert!(32 > bps);
 
     let header = try!(read_subframe_header(input));
 
