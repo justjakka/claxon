@@ -232,7 +232,8 @@ fn read_frame_header_or_eof<R: ReadBytes>(input: &mut R) -> Result<Option<FrameH
         0b100 => Some(16),
         0b101 => Some(20),
         0b110 => Some(24),
-        // Values 011 and 111 are reserved. Other values are impossible.
+        0b111 => Some(32),
+        // Values 011 is reserved. Other values are impossible.
         _ => return fmt_err("invalid frame header, encountered reserved value"),
     };
 
